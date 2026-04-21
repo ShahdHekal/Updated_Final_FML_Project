@@ -32,6 +32,7 @@ def experiment(base_args, exp_args):
     from market.background import MarketMakerAgent, MomentumAgent, NoiseAgent, \
                                   OrderBookImbalanceAgent, ValueAgent
     from market.exchange import ExchangeAgent
+    from market.adversarial_agent import AdversarialAgent
     from simulation import run_experiment
 
     # This experiment requires no additional command-line parameters.
@@ -39,7 +40,8 @@ def experiment(base_args, exp_args):
 
     # Configure the base agents for the experiment.  Exchange must be agent zero.
     # "Base" agents are those always present for this experiment.
-    base_ag = [ ExchangeAgent([args.symbol], args) ]
+    base_ag = [ ExchangeAgent([args.symbol], args) ] + \
+                [AdversarialAgent(args.symbol, 12e6, 10e9)]
     #base_ag = [ ExchangeAgent([args.symbol], args) ] + \
               #[ MarketMakerAgent(args.symbol, 1e1, 2e8, 100) ] + \
               #[ MomentumAgent(args.symbol, 5e6, 1e9, 100) for i in range(10)] + \

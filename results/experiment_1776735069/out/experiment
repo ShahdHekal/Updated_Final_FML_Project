@@ -1,0 +1,10 @@
+Random seed: 2383316522
+Starting simulation: model n/a on 2019-12-30, trip 0, mode simulate.
+Reconstruction successful.
+Loaded book as of 2019-12-30 10:00:00 and fast forwarded history.
+Simulation progress: 2019-12-30 10:30:00 in 0.141824
+Processed 49919 messages in 0.27883 seconds.  MPS: 179030.23347559443
+msg_from_ag: {0: 399, 1: 55}
+sim 0 model n/a trip 0 (2019-12-30:simulate), AdversarialAgent               profit:                38.60
+Simulation 0 ending!
+All done: experiment.
