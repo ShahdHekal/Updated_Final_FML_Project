@@ -32,18 +32,37 @@ def experiment(base_args, exp_args):
     from market.background import MarketMakerAgent, MomentumAgent, NoiseAgent, \
                                   OrderBookImbalanceAgent, ValueAgent
     from market.exchange import ExchangeAgent
-    from market.adversarial_agent import AdversarialAgent
+    from market.spoofing_agent import SpoofingAgent
     from market.hft_agent import HFTAgent
+    from market.adversarial_agent import AdversarialAgent
     from simulation import run_experiment
+    from types import SimpleNamespace
 
     # This experiment requires no additional command-line parameters.
     args = base_args
 
+    adv_args = SimpleNamespace(
+        symbol=args.symbol,
+        latency=100_000_000,
+        interval=100_000_000,
+        netsize=128,
+        gamma=0.95,
+        lr=3e-4,
+        batchsize=64,
+        start_e=1.0,
+        end_e=0.05,
+        explore_frac=0.4,
+        train_freq=4,
+        target_freq=500,
+        capital=10_000_000
+    )
+
     # Configure the base agents for the experiment.  Exchange must be agent zero.
     # "Base" agents are those always present for this experiment.
     base_ag = [ExchangeAgent([args.symbol], args) ] + \
-            [AdversarialAgent(args.symbol, 12e6, 10e9)] + \
-            [HFTAgent(args.symbol, minlat=1_000, interval=100_000_000, lot=50)]
+            [SpoofingAgent(args.symbol, 12e6, 10e9)] + \
+            [HFTAgent(args.symbol, minlat=1_000, interval=100_000_000, lot=50)] + \
+            [AdversarialAgent(adv_args)]
               #[ MarketMakerAgent(args.symbol, 1e1, 2e8, 100) ] + \
               #[ MomentumAgent(args.symbol, 5e6, 1e9, 100) for i in range(10)] + \
               #[ NoiseAgent(args.symbol, 12e6, 10e9) for i in range(20)] + \
