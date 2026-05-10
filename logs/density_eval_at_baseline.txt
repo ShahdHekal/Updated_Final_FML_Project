@@ -1,0 +1,40 @@
+ python3 scripts/eval_residuals.py \
+    --baseline_cell at_stable \
+    --output_path models/density/residuals_at_baseline.json
+Loaded tokenizer (vocab size 177)
+Loaded baseline: at_stable
+Floors: {'ht_stable': 3.6658935546875, 'ht_unstable': 3.610171616077423, 'at_stable': 3.0550897121429443, 'at_unstable': 3.0082873702049255}
+
+=== Evaluating at_stable model on ht_stable val runs ===
+Val runs: 4
+  NLL under baseline: 4.8706
+  Raw residual:       1.8148 CI: [1.6813533306121826, 1.9180206060409546]
+  Corrected residual: 1.2033 CI: [1.0952911376953125, 1.3000843524932861]
+  Per-factor NLL: {'event_type': 0.9710999727249146, 'side': 0.9752270579338074, 'price': 0.9750235676765442, 'size': 0.9758419394493103, 'time': 0.9736104011535645}
+  Top-5%-surprising agent classes: {1: 2782, 2: 744, 3: 1049, 4: 468}
+
+=== Evaluating at_stable model on ht_unstable val runs ===
+Val runs: 4
+  NLL under baseline: 4.9481
+  Raw residual:       1.8951 CI: [1.812954306602478, 1.9650251865386963]
+  Corrected residual: 1.3394 CI: [1.2578724026679993, 1.4099432826042175]
+  Per-factor NLL: {'event_type': 0.9850205779075623, 'side': 1.0000474452972412, 'price': 0.9895405173301697, 'size': 0.9859048128128052, 'time': 0.9876433610916138}
+  Top-5%-surprising agent classes: {1: 2435, 2: 633, 3: 973, 4: 443, 5: 20}
+
+=== Evaluating at_stable model on at_stable val runs ===
+Val runs: 4
+  NLL under baseline: 3.0551
+  Raw residual:       -0.0051 CI: [-0.232840895652771, 0.20644211769104004]
+  Corrected residual: 0.0011 CI: [-0.20645356178283691, 0.20644211769104004]
+  Per-factor NLL: {'event_type': 0.6113733649253845, 'side': 0.6125625967979431, 'price': 0.6111470460891724, 'size': 0.6117099523544312, 'time': 0.6108368635177612}
+  Top-5%-surprising agent classes: {1: 11178, 2: 853, 3: 866, 4: 353, 6: 26459, 7: 4, 8: 2288}
+
+=== Evaluating at_stable model on at_unstable val runs ===
+Val runs: 4
+  NLL under baseline: 3.0137
+  Raw residual:       -0.0413 CI: [-0.15859639644622803, 0.0757988691329956]
+  Corrected residual: 0.0056 CI: [-0.11179405450820923, 0.12267766147851937]
+  Per-factor NLL: {'event_type': 0.6034782528877258, 'side': 0.6031519770622253, 'price': 0.6021287441253662, 'size': 0.6033979058265686, 'time': 0.6024115681648254}
+  Top-5%-surprising agent classes: {1: 10844, 2: 867, 3: 898, 4: 351, 5: 24, 6: 25674, 7: 3, 8: 2276}
+
+Saved residuals to models/density/residuals_at_baseline.json

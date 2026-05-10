@@ -1,0 +1,49 @@
+Sun May 10 10:37:08 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.71.05              Driver Version: 595.71.05      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100 80GB PCIe          On  |   00000000:3F:00.0 Off |                    0 |
+| N/A   53C    P0             74W /  300W |       0MiB /  81920MiB |      0%   E. Process |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+=== Training at_stable ===
+[at_stable] Device: cuda
+[at_stable] Found 20 runs
+[at_stable] Train: 16, Val: 4
+[at_stable] Loaded tokenizer from models/density/tokenizer.pkl
+[at_stable] Building train corpus...
+[at_stable] Train: 16 runs, 49,710,520 tokens
+[at_stable] Building val corpus...
+[at_stable] Val: 4 runs, 12,555,235 tokens
+[at_stable] Building model
+[at_stable] Model params: 348,113
+[at_stable] Starting training
+epoch 0  loss 1.3079052217678675
+epoch 1  loss 0.7938436095625584
+epoch 2  loss 0.7076445293242407
+epoch 3  loss 0.6678474908323054
+epoch 4  loss 0.6427264123809844
+epoch 5  loss 0.6261374418032829
+epoch 6  loss 0.6130088851565406
+epoch 7  loss 0.6029011214408482
+epoch 8  loss 0.5948299648985746
+epoch 9  loss 0.5883109176020824
+[at_stable] Training done in 242.6s
+[at_stable] Evaluating on validation runs
+[at_stable] Floor NLL: 3.0551 ± 0.2100
+[at_stable] Saved model to models/density/model_at_stable.pt
+[at_stable] Saved floor metric to models/density/floor_at_stable.json
+[at_stable] Done.
+at_stable complete.
